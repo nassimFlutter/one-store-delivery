@@ -103,6 +103,8 @@ class HomePageViewState extends State<HomePageView> {
                         acceptTitle: "قبول",
                         loadingAcceptTitle: "جاري القبول ...",
                         status: OrderStatus.deliveryAccept,
+                        successMessage: "تم قبول الطلب بنجاح!",
+                        getStatus: OrderStatus.vendorAccept,
                       );
                     },
                   ),

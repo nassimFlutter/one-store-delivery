@@ -1,12 +1,10 @@
-enum OrderStatus {
-  deliveryAccept,
-  vendorAccept,
-  pending,
-}
+enum OrderStatus { deliveryAccept, vendorAccept, pending, delivered }
 
 extension OrderStatusExtension on OrderStatus {
   String toApiString() {
     switch (this) {
+      case OrderStatus.delivered:
+        return "delivered";
       case OrderStatus.deliveryAccept:
         return "delivery_accept";
       case OrderStatus.vendorAccept:

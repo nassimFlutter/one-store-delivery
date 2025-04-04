@@ -17,6 +17,8 @@ class OrderItemWidget extends StatefulWidget {
   final bool acceptable;
   final String acceptTitle, loadingAcceptTitle;
   final OrderStatus status;
+  final OrderStatus getStatus;
+  final String successMessage;
 
   const OrderItemWidget(
       {super.key,
@@ -25,7 +27,9 @@ class OrderItemWidget extends StatefulWidget {
       this.acceptable = true,
       required this.acceptTitle,
       required this.loadingAcceptTitle,
-      required this.status});
+      required this.status,
+      required this.successMessage,
+      required this.getStatus});
 
   @override
   OrderItemWidgetState createState() => OrderItemWidgetState();
@@ -123,16 +127,16 @@ class OrderItemWidgetState extends State<OrderItemWidget> {
                                     .then((_) {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
-                                      content: const Row(
+                                      content: Row(
                                         children: [
-                                          Icon(Icons.check_circle,
+                                          const Icon(Icons.check_circle,
                                               color:
                                                   Colors.white), // Success Icon
-                                          SizedBox(width: 10),
+                                          const SizedBox(width: 10),
                                           Expanded(
                                             child: Text(
-                                              "تم قبول الطلب بنجاح!",
-                                              style: TextStyle(
+                                              widget.successMessage,
+                                              style: const TextStyle(
                                                   fontSize: 16,
                                                   color: Colors.white),
                                             ),
@@ -147,7 +151,9 @@ class OrderItemWidgetState extends State<OrderItemWidget> {
                                       duration: const Duration(seconds: 3),
                                     ),
                                   );
-                                  context.read<HomeCubit>().fetchHomeOrder();
+                                  context
+                                      .read<HomeCubit>()
+                                      .fetchHomeOrder(status: widget.getStatus);
                                 }).catchError((error) {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(

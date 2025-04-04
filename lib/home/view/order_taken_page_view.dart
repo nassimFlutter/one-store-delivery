@@ -82,7 +82,9 @@ class _OrderTakenPageState extends State<OrderTakenPageView> {
                     acceptable: true,
                     acceptTitle: "تم التوصيل",
                     loadingAcceptTitle: "جاري التغير ...",
-                    status: OrderStatus.deliveryAccept,
+                    status: OrderStatus.delivered,
+                    getStatus: OrderStatus.deliveryAccept,
+                    successMessage: "تم التوصيل بنجاح",
                   );
                 },
               ),
