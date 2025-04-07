@@ -5,7 +5,12 @@ import requests
 from google.oauth2.service_account import Credentials
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
-
+from datetime import datetime
+import yaml
+def get_flutter_version(pubspec_path='pubspec.yaml'):
+    with open(pubspec_path, 'r') as f:
+        pubspec = yaml.safe_load(f)
+        return pubspec.get('version', 'unknown')
 def authenticate_gdrive():
     base64_creds = os.environ.get('GDRIVE_CREDENTIALS')
     if not base64_creds:
@@ -81,13 +86,14 @@ def sanitize_filename(filename):
 
 if __name__ == '__main__':
     telegram_token = os.environ.get('TELEGRAM_BOT_TOKEN')
-
+    current_date = datetime.now().strftime("%-d-%-m-%Y")
+    flutter_version = get_flutter_version()
     # Paths and custom names
     apk_path = 'build/app/outputs/flutter-apk/app-release.apk'
-    apk_name = sanitize_filename("one store delivery-APK_1.0.2+1_7-4-2025.apk")
+    apk_name = sanitize_filename(f"one store delivery-APK_{flutter_version}_{current_date}.apk")
 
     aab_path = 'build/app/outputs/bundle/release/app-release.aab'
-    aab_name = sanitize_filename("one store delivery-AAB_1.0.2+1_7-4-2025.aab")
+    aab_name = sanitize_filename(f"one store delivery-AAB_1.0.2+1_{current_date}.aab")
 
     gdrive_service = authenticate_gdrive()
 

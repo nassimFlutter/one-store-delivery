@@ -49,7 +49,7 @@ jobs:
           python-version: "3.x"
 
       - name: Install Python Dependencies
-        run: pip install google-auth google-auth-oauthlib google-auth-httplib2 google-api-python-client requests speedtest-cli
+        run: pip install pyyaml google-auth google-auth-oauthlib google-auth-httplib2 google-api-python-client requests speedtest-cli
 
       - name: Upload Artifacts to Google Drive and Send Telegram Message
         env:
