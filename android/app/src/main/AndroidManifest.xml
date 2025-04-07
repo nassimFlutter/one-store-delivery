@@ -2,7 +2,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:label="one_store_delivery"
+        android:label="One store delivery"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

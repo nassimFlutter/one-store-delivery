@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:one_store_delivery/Auth/login/view/login_page_view.dart';
 import 'package:one_store_delivery/core/assets_path/icons_path.dart';
+import 'package:one_store_delivery/core/helper_fuctions.dart';
 import 'package:one_store_delivery/core/utils/app_keys.dart';
 import 'package:one_store_delivery/core/utils/cache_helper.dart';
 import 'package:one_store_delivery/home/view/main_page.dart';
@@ -37,14 +38,14 @@ class _SplashScreenState extends State<SplashScreen>
       if (!mounted) return;
 
       if (token != null) {
-        Navigator.pushReplacement(
+        HelperFunctions.navigateToScreenAndRemove(
           context,
-          MaterialPageRoute(builder: (context) => const MainPage()),
+          (context) => const MainPage(),
         );
       } else {
-        Navigator.pushReplacement(
+        HelperFunctions.navigateToScreenAndRemove(
           context,
-          MaterialPageRoute(builder: (context) => LoginPageView()),
+          (context) => LoginPageView(),
         );
       }
     });

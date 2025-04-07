@@ -10,7 +10,18 @@ class HelperFunctions {
       ),
     );
   }
-
+  static void navigateToScreenAndRemove(
+      BuildContext context, WidgetBuilder screen) {
+    Navigator.pushAndRemoveUntil(
+      context,
+      CupertinoPageRoute(
+        builder: (_) => screen(context),
+      ),
+      (route) {
+        return false;
+      },
+    );
+  }
   static bool isInDebugMode() {
     return kDebugMode;
   }
