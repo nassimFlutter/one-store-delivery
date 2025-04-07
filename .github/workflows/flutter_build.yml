@@ -23,12 +23,14 @@ jobs:
         with:
           path: ~/.flutter
           key: flutter-sdk-${{ runner.os }}-3.24.5
-      
-      - name: Set up Flutter
+
+      - name: Clone Flutter into Cache if not hit
         if: steps.flutter-cache.outputs.cache-hit != 'true'
-        uses: subosito/flutter-action@v2
-        with:
-          flutter-version: '3.24.5'
+        run: |
+          git clone https://github.com/flutter/flutter.git --branch 3.24.5 --depth 1 ~/.flutter
+
+      - name: Add Flutter to PATH
+        run: echo "$HOME/.flutter/bin" >> $GITHUB_PATH
 
       - name: Install dependencies
         run: flutter pub get
