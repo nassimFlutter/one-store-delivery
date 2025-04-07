@@ -22,8 +22,8 @@ class LoginCubit extends Cubit<LoginState> {
   TextEditingController phoneController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   void initializeTestLoginData() {
-    passwordController.text = 'hH1234##1212';
-    phoneController.text = 'user11111';
+    phoneController.text = 'nassim2';
+    passwordController.text = '123123123';
   }
 
   Future<void> login() async {

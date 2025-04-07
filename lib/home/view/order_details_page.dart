@@ -103,12 +103,12 @@ class OrderDetailsPage extends StatelessWidget {
                         fontWeight: FontWeight.w500,
                         color: AppColor.black,
                       ),
-                      // subtitle:  CustomText(
-                      //   text:product. ,
-                      //   fontSize: 14,
-                      //   fontWeight: FontWeight.w400,
-                      //   color: AppColor.colorText,
-                      // ),
+                      subtitle: CustomText(
+                        text: "سعر المنتج:${product.price.toString()}",
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400,
+                        color: AppColor.colorText,
+                      ),
                       trailing: CustomText(
                         text: "${orderItem.quantity}",
                         fontSize: 16,

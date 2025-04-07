@@ -79,14 +79,14 @@ class OrderItemWidgetState extends State<OrderItemWidget> {
 
             // Order Info
             CustomText(
-              text: "عنوان الاستلام: ${widget.order.region}",
+              text: "عنوان الاستلام: ${widget.order.vendor.region}",
               fontSize: 16,
               fontWeight: FontWeight.w400,
               color: AppColor.colorText,
             ),
             SizedBox(height: 5.h),
             CustomText(
-              text: "عنوان التسليم: ${widget.order.vendor.region}",
+              text: "عنوان التسليم: ${widget.order.region }",
               fontSize: 16,
               fontWeight: FontWeight.w400,
               color: AppColor.colorText,

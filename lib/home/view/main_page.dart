@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:one_store_delivery/home/view/home_page_view.dart';
-import 'package:one_store_delivery/home/view/order_taken.dart';
+import 'package:one_store_delivery/home/view/order_history_page_view.dart';
 import 'package:one_store_delivery/widgets/color.dart';
 import 'order_taken_page_view.dart';
 
@@ -19,7 +19,7 @@ class MainPageState extends State<MainPage> {
   final List<Widget> _pages = [
     const HomePageView(),
     const OrderTakenPageView(),
-    const OrderTakenView(),
+    const OrderHistory(),
   ];
 
   // Handle tab selection
