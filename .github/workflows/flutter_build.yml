@@ -17,10 +17,18 @@ jobs:
           java-version: "17"
           distribution: "temurin"
 
+      - name: Cache Flutter SDK
+        uses: actions/cache@v3
+        id: flutter-cache
+        with:
+          path: ~/.flutter
+          key: flutter-sdk-${{ runner.os }}-3.24.5
+      
       - name: Set up Flutter
+        if: steps.flutter-cache.outputs.cache-hit != 'true'
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: "3.24.5"
+          flutter-version: '3.24.5'
 
       - name: Install dependencies
         run: flutter pub get
