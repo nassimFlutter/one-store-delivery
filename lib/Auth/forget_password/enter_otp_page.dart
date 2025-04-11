@@ -10,7 +10,6 @@ import 'package:one_store_delivery/widgets/color.dart';
 import 'package:one_store_delivery/widgets/custom_button.dart';
 import 'package:one_store_delivery/widgets/custom_text.dart';
 import 'package:one_store_delivery/widgets/custom_TextFormField.dart';
-import 'package:one_store_delivery/widgets/custom_success_snack_bar.dart';
 import 'package:one_store_delivery/widgets/custom_error_dailog.dart';
 
 class EnterOtpPage extends StatelessWidget {

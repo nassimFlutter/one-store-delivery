@@ -1,8 +1,6 @@
-import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meta/meta.dart';
 import 'package:one_store_delivery/Auth/repo/auth_repo_impl.dart';
 import 'package:one_store_delivery/core/api/error_handler.dart';
 import 'package:one_store_delivery/core/utils/service_locator.dart';

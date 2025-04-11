@@ -9,6 +9,7 @@ import 'package:one_store_delivery/home/view/order_details_page.dart';
 import 'package:one_store_delivery/models/home_response.dart';
 import 'package:one_store_delivery/widgets/color.dart';
 import 'package:one_store_delivery/widgets/custom_button.dart';
+import 'package:one_store_delivery/widgets/custom_success_snack_bar.dart';
 import 'package:one_store_delivery/widgets/custom_text.dart';
 
 class OrderItemWidget extends StatefulWidget {
@@ -86,7 +87,7 @@ class OrderItemWidgetState extends State<OrderItemWidget> {
             ),
             SizedBox(height: 5.h),
             CustomText(
-              text: "عنوان التسليم: ${widget.order.region }",
+              text: "عنوان التسليم: ${widget.order.region}",
               fontSize: 16,
               fontWeight: FontWeight.w400,
               color: AppColor.colorText,
@@ -125,35 +126,38 @@ class OrderItemWidgetState extends State<OrderItemWidget> {
                                     .editOrder(widget.order.id.toString(),
                                         widget.status)
                                     .then((_) {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      content: Row(
-                                        children: [
-                                          const Icon(Icons.check_circle,
-                                              color:
-                                                  Colors.white), // Success Icon
-                                          const SizedBox(width: 10),
-                                          Expanded(
-                                            child: Text(
-                                              widget.successMessage,
-                                              style: const TextStyle(
-                                                  fontSize: 16,
-                                                  color: Colors.white),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      backgroundColor: AppColor.green,
-                                      behavior: SnackBarBehavior.floating,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(10),
-                                      ),
-                                      duration: const Duration(seconds: 3),
-                                    ),
-                                  );
-                                  context
-                                      .read<HomeCubit>()
-                                      .fetchHomeOrder(status: widget.getStatus);
+                                  // ScaffoldMessenger.of(context).showSnackBar(
+                                  //   SnackBar(
+                                  //     content: Row(
+                                  //       children: [
+                                  //         const Icon(Icons.check_circle,
+                                  //             color:
+                                  //                 Colors.white), // Success Icon
+                                  //         const SizedBox(width: 10),
+                                  //         Expanded(
+                                  //           child: Text(
+                                  //             widget.successMessage,
+                                  //             style: const TextStyle(
+                                  //                 fontSize: 16,
+                                  //                 color: Colors.white),
+                                  //           ),
+                                  //         ),
+                                  //       ],
+                                  //     ),
+                                  //     backgroundColor: AppColor.green,
+                                  //     behavior: SnackBarBehavior.floating,
+                                  //     shape: RoundedRectangleBorder(
+                                  //       borderRadius: BorderRadius.circular(10),
+                                  //     ),
+                                  //     duration: const Duration(seconds: 3),
+                                  //   ),
+                                  // );
+                                  if (context.mounted) {
+                                    CustomSuccessSnackBar.show(
+                                        context, widget.successMessage);
+                                    context.read<HomeCubit>().fetchHomeOrder(
+                                        status: widget.getStatus);
+                                  }
                                 }).catchError((error) {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(

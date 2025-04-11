@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:one_store_delivery/core/utils/app_keys.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class CacheHelper {
@@ -41,5 +42,21 @@ class CacheHelper {
 
   static Future<void> clearCache() async {
     await sharedPreferences.clear();
+  }
+
+  static Future<void> clearUserData() async {
+    await CacheHelper.deleteData(key: AppKeys.kToken);
+    await CacheHelper.deleteData(key: AppKeys.kUserId);
+    await CacheHelper.deleteData(key: AppKeys.kUserName);
+    await CacheHelper.deleteData(key: AppKeys.kUserPhone);
+    await CacheHelper.deleteData(key: AppKeys.kUserAddress);
+    await CacheHelper.deleteData(key: AppKeys.kUserRegion);
+    await CacheHelper.deleteData(key: AppKeys.kUserRole);
+    await CacheHelper.deleteData(key: AppKeys.kUserStatus);
+    await CacheHelper.deleteData(key: AppKeys.kUserLat);
+    await CacheHelper.deleteData(key: AppKeys.kUserLon);
+    await CacheHelper.deleteData(key: AppKeys.kUserIsVerified);
+    await CacheHelper.deleteData(key: AppKeys.kUserCreatedAt);
+    await CacheHelper.deleteData(key: AppKeys.kUserUpdatedAt);
   }
 }

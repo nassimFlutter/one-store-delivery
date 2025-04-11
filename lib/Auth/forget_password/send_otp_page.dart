@@ -20,7 +20,6 @@ class SendOtpPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-    double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     final sendOtpCubit = SendOtpCubit.get(context);
     return Scaffold(

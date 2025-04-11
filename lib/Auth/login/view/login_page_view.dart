@@ -10,7 +10,6 @@ import 'package:one_store_delivery/core/assets_path/icons_path.dart';
 import 'package:one_store_delivery/core/helper_fuctions.dart';
 import 'package:one_store_delivery/core/validate.dart';
 import 'package:one_store_delivery/home/view/custom_loading.dart';
-import 'package:one_store_delivery/home/view/home_page_view.dart';
 import 'package:one_store_delivery/home/view/main_page.dart';
 import 'package:one_store_delivery/widgets/color.dart';
 import 'package:one_store_delivery/widgets/custom_TextFormField.dart';
@@ -25,7 +24,6 @@ class LoginPageView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     LoginCubit cubit = LoginCubit.get(context);
-    double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: SafeArea(

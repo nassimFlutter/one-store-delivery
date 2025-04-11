@@ -12,6 +12,7 @@ import 'package:one_store_delivery/core/utils/service_locator.dart';
 import 'package:one_store_delivery/generated/l10n.dart';
 import 'package:one_store_delivery/home/cubits/edit_order_cubit/edit_order_cubit.dart';
 import 'package:one_store_delivery/home/cubits/home_cubit/home_cubit.dart';
+import 'package:one_store_delivery/profile/manager/profile_cubit/profile_cubit.dart';
 import 'package:one_store_delivery/splach_view.dart';
 
 void main() async {
@@ -61,6 +62,9 @@ class MyApp extends StatelessWidget {
             ),
             BlocProvider(
               create: (context) => ForgetPasswordCubit(),
+            ),
+            BlocProvider(
+              create: (context) => ProfileCubit(),
             ),
           ],
           child: MaterialApp(

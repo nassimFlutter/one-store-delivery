@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:one_store_delivery/Auth/login/view/login_page_view.dart';
 import 'package:one_store_delivery/Auth/register/manager/cubit/register_cubit.dart';
 import 'package:one_store_delivery/core/assets_path/icons_path.dart';
 import 'package:one_store_delivery/core/validate.dart';

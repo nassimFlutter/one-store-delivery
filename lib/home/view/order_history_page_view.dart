@@ -30,18 +30,6 @@ class _OrderHistoryState extends State<OrderHistory> {
     double width = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        automaticallyImplyLeading: false,
-        title: const CustomText(
-          text: "سجل الطلبات",
-          fontSize: 20,
-          fontWeight: FontWeight.bold,
-          color: AppColor.appColor,
-        ),
-        backgroundColor: Colors.white,
-        centerTitle: true,
-      ),
       body: BlocConsumer<HomeCubit, HomeState>(
         listener: (context, state) {},
         builder: (context, state) {

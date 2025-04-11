@@ -53,7 +53,7 @@ class ServerFailure extends Failure {
   factory ServerFailure.fromResponse(int statusCode, dynamic response) {
     debugPrint('statusCode is $statusCode');
 
-    var error;
+    var error = '';
     if (response is Map) {
       error = response['message'] ?? "";
       // ! here we should change the key after check from backend
@@ -62,7 +62,7 @@ class ServerFailure extends Failure {
     if (statusCode == 401 || statusCode == 403 || statusCode == 422) {
       return ServerFailure(error, statusCode);
     } else if (statusCode == 404) {
-      return ServerFailure(error ?? "404 not found", statusCode);
+      return ServerFailure(error, statusCode);
     } else if (statusCode == 500) {
       return ServerFailure(
           'internal Server error, Please try later', statusCode);

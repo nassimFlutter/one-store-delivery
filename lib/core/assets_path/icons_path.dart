@@ -5,5 +5,6 @@ class IconsPath {
   /// Assets for iconsLogo
   /// assets/icons/logo.png
   static const String iconsLogo = "assets/icons/logo.png";
+  static const String deliveryBoyLogo = "assets/icons/delivery-boy.png";
 }
 

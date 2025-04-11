@@ -9,18 +9,18 @@ class UserModel {
   UserModel.fromJson(Map<String, dynamic> json) {
     status = json['status'];
     message = json['message'];
-    data = json['data'] != null ? new Data.fromJson(json['data']) : null;
+    data = json['data'] != null ? Data.fromJson(json['data']) : null;
     errors = json['errors'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['status'] = this.status;
-    data['message'] = this.message;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['status'] = status;
+    data['message'] = message;
     if (this.data != null) {
       data['data'] = this.data!.toJson();
     }
-    data['errors'] = this.errors;
+    data['errors'] = errors;
     return data;
   }
 }
@@ -57,15 +57,15 @@ class Data {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['is_verified'] = this.isVerified;
-    data['id'] = this.id;
-    data['user'] = this.user;
-    data['image'] = this.image;
-    data['phone'] = this.phone;
-    data['address'] = this.address;
-    data['updatedAt'] = this.updatedAt;
-    data['createdAt'] = this.createdAt;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['is_verified'] = isVerified;
+    data['id'] = id;
+    data['user'] = user;
+    data['image'] = image;
+    data['phone'] = phone;
+    data['address'] = address;
+    data['updatedAt'] = updatedAt;
+    data['createdAt'] = createdAt;
     return data;
   }
 }

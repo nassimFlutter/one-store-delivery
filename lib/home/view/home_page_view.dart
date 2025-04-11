@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:one_store_delivery/core/assets_path/icons_path.dart';
 import 'package:one_store_delivery/core/utils/order_status.dart';
 
 import 'package:one_store_delivery/home/cubits/home_cubit/home_cubit.dart';
@@ -29,37 +30,6 @@ class HomePageViewState extends State<HomePageView> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        // actions: [
-        //   Padding(
-        //     padding: const EdgeInsets.symmetric(horizontal: 16.0),
-        //     child: Row(
-        //       children: [
-        //         const Icon(Icons.person, color: Colors.black), // Person Icon
-        //         const SizedBox(width: 5), // Space between icon and text
-        //         Text(
-        //           CacheHelper.getData(key: AppKeys.kUserName) ?? "User",
-        //           style: const TextStyle(
-        //             fontSize: 16,
-        //             fontWeight: FontWeight.w500,
-        //             color: Colors.black,
-        //           ),
-        //         ),
-        //       ],
-        //     ),
-        //   ),
-        // ],
-        title: const CustomText(
-          text: "طلبات التوصيل",
-          fontSize: 20,
-          fontWeight: FontWeight.bold,
-          color: AppColor.appColor,
-        ),
-        backgroundColor: Colors.white,
-        centerTitle: true,
-        automaticallyImplyLeading: false,
-      ),
       body: RefreshIndicator(
         backgroundColor: Colors.white,
         color: AppColor.appColor,

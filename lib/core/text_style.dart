@@ -22,4 +22,15 @@ abstract class AppStyles {
       ),
     );
   }
+
+  static TextStyle style16w600GrayA1(context) {
+    return getCustomTextStyle(
+      context,
+      const TextStyle(
+        color: AppColor.grayA1,
+        fontSize: 16,
+        fontWeight: FontWeight.w600,
+      ),
+    );
+  }
 }

@@ -57,86 +57,95 @@ class CustomTextFormField extends StatelessWidget {
       return mycontroller?.text != initialValue;
     }
 
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 5),
-      child: SizedBox(
-          child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(
-            height: height,
-            child: TextFormField(
-              cursorColor: AppColor.appColor,
-              obscureText: isPassword!,
-              readOnly: readOnly,
-              onTap: onTap,
-              controller: mycontroller,
-              textAlign: textAlign,
-              keyboardType: keyboardType,
-              style: const TextStyle(
-                locale: Locale('ar'),
-                fontFamily: 'Cairo',
-                fontSize: 15,
-                color: AppColor.colorText,
-                fontWeight: FontWeight.w400,
-              ),
-              maxLength: null,
-              validator: validator,
-              decoration: InputDecoration(
-                filled: true,
-                // constraints: BoxConstraints(minHeight: height),
-                fillColor: fillColor ?? AppColor.grayA1,
-                focusColor: AppColor.appColor,
-                hintText: hintText,
-                alignLabelWithHint: true,
-                isDense: true,
-                hintStyle: const TextStyle( 
+    return Theme(
+      data: Theme.of(context).copyWith(
+          textSelectionTheme: const TextSelectionThemeData(
+        cursorColor: AppColor.appColor,
+        selectionColor: AppColor.appColor,
+        selectionHandleColor: Colors.orange,
+      )),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 5),
+        child: SizedBox(
+            child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(
+              height: height,
+              child: TextFormField(
+                cursorColor: AppColor.appColor,
+                obscureText: isPassword!,
+                readOnly: readOnly,
+                onTap: onTap,
+                controller: mycontroller,
+                textAlign: textAlign,
+                keyboardType: keyboardType,
+                style: const TextStyle(
                   locale: Locale('ar'),
                   fontFamily: 'Cairo',
-                  fontSize: 14,
-                  fontWeight: FontWeight.w400,
+                  fontSize: 15,
                   color: AppColor.colorText,
+                  fontWeight: FontWeight.w400,
                 ),
-                prefixIcon: prefex,
-                contentPadding:
-                    EdgeInsets.symmetric(horizontal: 16, vertical: 15.h),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                      color: (isAppColor)
-                          ? AppColor.appColor
-                          : AppColor.grayhintText),
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(radius),
+                maxLength: null,
+                validator: validator,
+                decoration: InputDecoration(
+                  filled: true,
+                  // constraints: BoxConstraints(minHeight: height),
+                  fillColor: fillColor ?? AppColor.grayA1,
+
+                  focusColor: AppColor.appColor,
+                  hintText: hintText,
+                  alignLabelWithHint: true,
+                  isDense: true,
+                  hintStyle: const TextStyle(
+                    locale: Locale('ar'),
+                    fontFamily: 'Cairo',
+                    fontSize: 14,
+                    fontWeight: FontWeight.w400,
+                    color: AppColor.colorText,
                   ),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: AppColor.appColor),
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(radius),
+                  prefixIcon: prefex,
+                  contentPadding:
+                      EdgeInsets.symmetric(horizontal: 16, vertical: 15.h),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                        color: (isAppColor)
+                            ? AppColor.appColor
+                            : AppColor.grayhintText),
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(radius),
+                    ),
                   ),
-                ),
-                errorBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.redAccent),
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(radius),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(color: AppColor.appColor),
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(radius),
+                    ),
                   ),
-                ),
-                border: OutlineInputBorder(
-                  borderSide: BorderSide(color: AppColor.appColor),
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(radius),
+                  errorBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(color: Colors.redAccent),
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(radius),
+                    ),
                   ),
+                  border: OutlineInputBorder(
+                    borderSide: const BorderSide(color: AppColor.appColor),
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(radius),
+                    ),
+                  ),
+                  suffixIcon: suffix,
                 ),
-                suffixIcon: suffix,
+                onSaved: onSave,
+                onChanged: onChanged,
+                onFieldSubmitted: onFieldSubmitted,
               ),
-              onSaved: onSave,
-              onChanged: onChanged,
-              onFieldSubmitted: onFieldSubmitted,
             ),
-          ),
-        ],
-      )),
+          ],
+        )),
+      ),
     );
   }
 }

@@ -33,18 +33,6 @@ class _OrderTakenPageState extends State<OrderTakenPageView> {
     double width = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        automaticallyImplyLeading: false,
-        title: const CustomText(
-          text: "الطلبات الجارية",
-          fontSize: 20,
-          fontWeight: FontWeight.bold,
-          color: AppColor.appColor,
-        ),
-        backgroundColor: Colors.white,
-        centerTitle: true,
-      ),
       body: BlocBuilder<HomeCubit, HomeState>(
         builder: (context, state) {
           if (state is HomeLoading) {

@@ -57,7 +57,7 @@ class AuthRepo {
       String lat,
       String lon) async {
     try {
-      var response = await apiMethod
+      await apiMethod
           .post(endPoint: "/api/auth/register", isLogin: true, data: {
         "user": user,
         "phone": phone,
