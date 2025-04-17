@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:one_store_delivery/Auth/login/view/login_page_view.dart';
 import 'package:one_store_delivery/Auth/register/manager/cubit/register_cubit.dart';
 import 'package:one_store_delivery/core/assets_path/icons_path.dart';
+import 'package:one_store_delivery/core/helper_fuctions.dart';
 import 'package:one_store_delivery/core/validate.dart';
 import 'package:one_store_delivery/home/view/custom_loading.dart';
 import 'package:one_store_delivery/widgets/color.dart';
 import 'package:one_store_delivery/widgets/custom_TextFormField.dart';
 import 'package:one_store_delivery/widgets/custom_button.dart';
 import 'package:one_store_delivery/widgets/custom_error_dailog.dart';
+import 'package:one_store_delivery/widgets/custom_success_snack_bar.dart';
 import 'package:one_store_delivery/widgets/custom_text.dart';
 
 class RegisterPageViewBody extends StatefulWidget {
@@ -133,6 +137,17 @@ class _RegisterPageViewBodyState extends State<RegisterPageViewBody> {
                   listener: (context, state) {
                     if (state is RegisterFailure) {
                       CustomFailureDialog.show(context, state.error);
+                    } else if (state is RegisterSuccess) {
+                      CustomSuccessSnackBar.show(
+                          context, "تم أنشاء الحساب بنجاح");
+                      Future.delayed(const Duration(seconds: 2), () {
+                        if (context.mounted) {
+                          HelperFunctions.navigateToScreenAndRemove(
+                            context,
+                            (context) => LoginPageView(),
+                          );
+                        }
+                      });
                     }
                   },
                   builder: (context, state) {
@@ -144,7 +159,13 @@ class _RegisterPageViewBodyState extends State<RegisterPageViewBody> {
                           text: "انشاء حساب",
                           onPressed: () async {
                             if (formKey.currentState!.validate()) {
-                              cubit.register();
+                              Position? position =
+                                  await cubit.getUserLocation(context);
+                              if (position != null) {
+                                cubit.lat = position.latitude;
+                                cubit.lon = position.longitude;
+                                cubit.register();
+                              }
                             }
                           },
                           colorBackGround: AppColor.appColor,

@@ -17,7 +17,7 @@ abstract class AppStyles {
       context,
       const TextStyle(
         color: AppColor.grayA1,
-        fontSize: 28,
+        fontSize: 28, 
         fontWeight: FontWeight.w600,
       ),
     );
@@ -30,6 +30,7 @@ abstract class AppStyles {
         color: AppColor.grayA1,
         fontSize: 16,
         fontWeight: FontWeight.w600,
+        
       ),
     );
   }

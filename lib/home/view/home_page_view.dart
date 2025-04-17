@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:one_store_delivery/core/assets_path/icons_path.dart';
 import 'package:one_store_delivery/core/utils/order_status.dart';
 
 import 'package:one_store_delivery/home/cubits/home_cubit/home_cubit.dart';
 import 'package:one_store_delivery/widgets/color.dart';
 import 'package:one_store_delivery/widgets/custom_emty_screen.dart';
-import 'package:one_store_delivery/widgets/custom_text.dart';
 import 'custom_error_widget.dart';
 import 'custom_loading.dart';
 import 'order_item_widget.dart';

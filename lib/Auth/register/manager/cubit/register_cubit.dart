@@ -1,59 +1,75 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:one_store_delivery/Auth/repo/auth_repo_impl.dart';
 import 'package:one_store_delivery/core/api/error_handler.dart';
+import 'package:one_store_delivery/core/helper_fuctions.dart';
 import 'package:one_store_delivery/core/utils/service_locator.dart';
 
 part 'register_state.dart';
 
 class RegisterCubit extends Cubit<RegisterState> {
-  RegisterCubit() : super(RegisterInitial());
+  RegisterCubit() : super(RegisterInitial()) {
+    if (HelperFunctions.isInDebugMode()) {
+      initializeTestRegisterData();
+    }
+  }
   static RegisterCubit get(context) => BlocProvider.of(context);
-// void getCurrentLocation() async {
-//     bool serviceEnabled;
-//     LocationPermission permission;
-
-//     // Test if location services are enabled.
-//     serviceEnabled = await Geolocator.isLocationServiceEnabled();
-//     if (!serviceEnabled) {
-//       // Location services are not enabled, do nothing.
-
-//       locationMessage = "Location services are disabled.";
-
-//       return;
-//     }
-
-//     permission = await Geolocator.checkPermission();
-//     if (permission == LocationPermission.denied) {
-//       permission = await Geolocator.requestPermission();
-//       if (permission == LocationPermission.denied) {
-//         // Permissions are denied, do nothing.
-//         locationMessage = "Location permissions are denied.";
-
-//         return;
-//       }
-//     }
-//     if (permission == LocationPermission.deniedForever) {
-//       // Permissions are denied forever, do nothing.
-//       locationMessage = "Location permissions are permanently denied.";
-
-//       return;
-//     }
-
-//     position = await Geolocator.getCurrentPosition(
-//         desiredAccuracy: LocationAccuracy.high);
-//     locationMessage =
-//         "Latitude: ${position?.latitude}, Longitude: ${position?.longitude}";
-//   }
 
   TextEditingController addressController = TextEditingController();
   TextEditingController nameController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
-  TextEditingController countryController = TextEditingController();
-  TextEditingController datePicker = TextEditingController();
+
   TextEditingController passwordController = TextEditingController();
   TextEditingController passwordConfirmController = TextEditingController();
+  double? lat;
+  double? lon;
+  void initializeTestRegisterData() {
+    phoneController.text = '0997007017';
+    passwordController.text = '123123123';
+    addressController.text = "Test";
+    passwordController.text = "xxxxxxxx";
+    passwordConfirmController.text = "xxxxxxxx";
+  }
+
+  Future<Position?> getUserLocation(BuildContext context) async {
+    bool serviceEnabled;
+    LocationPermission permission;
+
+    // Check if location services are enabled
+    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("الرجاء تفعيل خدمة الموقع")),
+      );
+      return null;
+    }
+
+    // Request permissions
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("تم رفض صلاحية الموقع")),
+        );
+        return null;
+      }
+    }
+
+    if (permission == LocationPermission.deniedForever) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("صلاحية الموقع مرفوضة نهائيًا")),
+      );
+      return null;
+    }
+
+    // Get current location
+    return await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high);
+  }
+
   Future<void> register() async {
     emit(RegisterLoading());
 
@@ -63,8 +79,8 @@ class RegisterCubit extends Cubit<RegisterState> {
           addressController.text,
           phoneController.text,
           passwordConfirmController.text,
-          "30",
-          "30",
+          lat.toString(),
+          lon.toString(),
         );
 
     result.fold(
