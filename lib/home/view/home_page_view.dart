@@ -39,7 +39,7 @@ class HomePageViewState extends State<HomePageView> {
         child: BlocBuilder<HomeCubit, HomeState>(
           builder: (context, state) {
             if (state is HomeLoading) {
-              return const CustomLoading();
+              return const CustomLoadingAnimate();
             } else if (state is HomeError) {
               return CustomErrorWidget(
                 errorMessage: state.message,

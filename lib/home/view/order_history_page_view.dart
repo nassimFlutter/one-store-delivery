@@ -32,7 +32,7 @@ class _OrderHistoryState extends State<OrderHistory> {
         listener: (context, state) {},
         builder: (context, state) {
           if (state is HomeLoading) {
-            return const CustomLoading();
+            return const CustomLoadingAnimate();
           } else if (state is HomeError) {
             return CustomErrorWidget(
               errorMessage: state.message,
