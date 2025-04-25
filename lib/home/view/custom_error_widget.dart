@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:one_store_delivery/core/helper_fuctions.dart';
+import 'package:one_store_delivery/widgets/color.dart';
 
 class CustomErrorWidget extends StatelessWidget {
   const CustomErrorWidget({
@@ -9,7 +10,7 @@ class CustomErrorWidget extends StatelessWidget {
   });
 
   final String errorMessage;
-  final VoidCallback retryCallback; // Callback for retry
+  final VoidCallback retryCallback;
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +63,14 @@ class CustomErrorWidget extends StatelessWidget {
                   borderRadius: BorderRadius.circular(8.0),
                 ),
               ), // Execute the retry callback
-              child: const Text("إعادة المحاولة"),
+              child: const Text(
+                "إعادة المحاولة",
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w700,
+                  color: AppColor.grayWithOpacity,
+                ),
+              ),
             ),
           ],
         ),

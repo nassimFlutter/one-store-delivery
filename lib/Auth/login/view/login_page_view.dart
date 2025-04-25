@@ -73,10 +73,24 @@ class LoginPageView extends StatelessWidget {
                   ),
                   const Center(
                     child: CustomText(
+                      text: "سجّل دخولك لتبدأ توصيل الطلبات بسرعة وكفاءة",
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                      color: AppColor.colorText,
+                      fontFamily: "Cairo",
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10.h,
+                  ),
+                  const Center(
+                    child: CustomText(
                       text: "تسجيل الدخول",
                       fontSize: 27,
                       fontWeight: FontWeight.bold,
                       color: AppColor.black,
+                      fontFamily: "Cairo",
                     ),
                   ),
                   const SizedBox(
@@ -113,6 +127,7 @@ class LoginPageView extends StatelessWidget {
                         fontSize: 14,
                         fontWeight: FontWeight.w400,
                         color: AppColor.appColor,
+                        fontFamily: "Cairo",
                       ),
                     ),
                   ),
@@ -167,6 +182,7 @@ class LoginPageView extends StatelessWidget {
                         fontSize: 16,
                         fontWeight: FontWeight.w400,
                         color: AppColor.colorText,
+                        fontFamily: "Cairo",
                       ),
                       const SizedBox(
                         width: 5,
@@ -184,6 +200,7 @@ class LoginPageView extends StatelessWidget {
                           fontSize: 16,
                           fontWeight: FontWeight.w400,
                           color: AppColor.appColor,
+                          fontFamily: "Cairo",
                         ),
                       ),
                     ],

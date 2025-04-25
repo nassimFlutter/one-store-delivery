@@ -6,10 +6,8 @@ import 'package:one_store_delivery/home/cubits/home_cubit/home_cubit.dart';
 import 'package:one_store_delivery/home/view/custom_error_widget.dart';
 import 'package:one_store_delivery/home/view/custom_loading.dart';
 import 'package:one_store_delivery/home/view/order_item_widget.dart';
-import 'package:one_store_delivery/widgets/color.dart';
-import 'package:one_store_delivery/widgets/custom_button.dart';
+
 import 'package:one_store_delivery/widgets/custom_emty_screen.dart';
-import 'package:one_store_delivery/widgets/custom_text.dart';
 
 class OrderHistory extends StatefulWidget {
   const OrderHistory({super.key});

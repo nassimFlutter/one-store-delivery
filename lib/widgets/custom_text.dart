@@ -2,7 +2,6 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:one_store_delivery/widgets/color.dart';
 
-
 class CustomText extends StatelessWidget {
   final String text;
 
